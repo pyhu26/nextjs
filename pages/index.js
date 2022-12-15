@@ -7,10 +7,12 @@ import Link from '../src/Link';
 import Copyright from '../src/Copyright';
 import Template from '../src/layout/Template';
 
+import tab1 from './page/tab1';
+
 export default function Index() {
   return (
     <Container maxWidth="sx">
-      <Box component="main" sx={{ flexGrow: 1, p: 3 , mt:2 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 2 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Next.js example
         </Typography>

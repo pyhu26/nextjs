@@ -132,7 +132,7 @@ export default function Template() {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['filter', 'grid', 'Send email', 'Drafts'].map((text, index) => (
+            {['filter', 'axios', 'flTabs', 'Drafts'].map((text, index) => (
               
               <ListItem key={text} disablePadding>
                 <ListItemButton onClick={handleListClick}>

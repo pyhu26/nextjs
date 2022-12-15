@@ -3,6 +3,8 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import TextField from '@mui/material/TextField';
+
 export default function filter() {
     return (
         <Container maxWidth="sx">
@@ -12,7 +14,19 @@ export default function filter() {
                 </Typography>
                 <ul>
                     <li>
-                        tilter-textbox                        
+                        tilter-textbox    
+                        <Box
+                            component="form"
+                            sx={{
+                                '& > :not(style)': { m: 1, width: '25ch' },
+                            }}
+                            noValidate
+                            autoComplete="off"
+                        >
+                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                            <TextField id="filled-basic" label="Filled" variant="filled" />
+                            <TextField id="standard-basic" label="Standard" variant="standard" />
+                        </Box>
                     </li>
                     <li>
                         tilter-numberbox                        

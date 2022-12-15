@@ -1,7 +1,8 @@
 import * as React from 'react';
 import axios from 'axios';
 
-export default function grid() {
+
+export default function () {
 
     const [stateMenu, SetStateMenu] = React.useState(null);
     const axios = require('axios');
@@ -26,4 +27,5 @@ export default function grid() {
             stateMenu
         }</p>
     );
+
 }
