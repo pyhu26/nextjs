@@ -10,23 +10,56 @@ import * as pages from '../page';
 
 export default function FlTab(props) {
     const [value, setValue] = React.useState(0);
+    const [tabText, setTabText] = React.useState(null);
+    const [custom, setCustom] = React.useState(null);
+    const [arrCustom,setArrCustom] = React.useState([]);
     const arrTabs = props.tabs;
     
-    let pageName = 'tab1';
+    //let pageName = 'tab1';
     
     const handleChange = (event, newValue) => {
+        console.log(`tab index : ${newValue} | tab text : ${arrTabs[newValue]}`);
+        
         setValue(newValue);
-        console.log(arrTabs[newValue]);
-        const url = arrTabs[newValue];
-        // Router.push(url);
-        pageName = url;
+        setTabText(arrTabs[newValue].toString());
+        
+        console.log(`pageName1 : ${tabText}`);
+        console.log(`arrTabs[newValue] : ${arrTabs[newValue].toString()}`);
+        
+
+
+        if(value > 0)
+        {
+
+            console.log('기존 페이지 로드');
+            setCustom(
+                arrCustom[value]  
+                );
+        }
+        else
+        {
+            console.log('새 페이지');
+
+            const newPage = newCustom();
+            setArrCustom((prevCustom) => [...prevCustom, newPage]);
+            setCustom(newPage);
+        }
     };
 
-    const moveRoute = (url, event) => {
-        //Router.push(url);
-        console.log(url);
+    const newCustom = () =>{
+        console.log(`pageName2 : ${tabText}`);
+        return <Custom pageName = { tabText } key={value} ></Custom> ;
     }
 
+    // const newCustom = (arrCustom)=>{
+    //     const newCustom = <Custom pageName = { pageName } key={value} ></Custom> ;
+
+    //     [...arrCustom, newCustom]
+
+    //     return(
+    //         newCustom
+    //     );
+    // }
 
     return (
         <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: 'background.paper' }}>
@@ -36,7 +69,6 @@ export default function FlTab(props) {
                 variant="scrollable"
                 scrollButtons="auto"
                 aria-label="scrollable auto tabs example"
-                onClick={moveRoute(value)}
             >
 
                 {arrTabs.map((item, index) =>
@@ -45,7 +77,11 @@ export default function FlTab(props) {
 
             </Tabs>
 
-            <Custom pageName = {{pageName}} ></Custom>
+            {/* { pageName && (
+                <Custom pageName = { pageName } key={value} ></Custom>
+            )}         */}
+
+            {custom}      
         </Box>
     );
 }

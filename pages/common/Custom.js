@@ -9,27 +9,35 @@ export default class Custom extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageName: this.props.pageName
+            pageId: ""
         };
     }
+
+    componentDidMount(){
+        console.log(this.props);
+        this.setState({ pageId : this.props.pageName });
+    }
+    
     render() {
      
         const Component = {
             tab1: tab1,
-            tab2: tab2
+            tab2: tab2,
+            tab3: tab3,
         };
 
         // this.setState( {pageName : this.props.pageName });
 
-        // const SpecificStory = Component[this.pageName];
+        const SpecificStory = Component[this.state.pageId];
 
         return (
             <>
-                <h1>  { this.pageName }  </h1>
+                { this.state.pageId && (
+                    
+                    <SpecificStory> </SpecificStory>
+                )}  
 
-                {/* { this.pageName && (
-                    <SpecificStory></SpecificStory>
-                )} */}
+                
             </>
         )
     }
